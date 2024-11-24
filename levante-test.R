@@ -24,11 +24,6 @@ use_dataset <- our_datasets$`DE-pilot`
 trials_table <- use_dataset$trials
 users_table <- use_dataset$users
 
-our_datasets_full <- get_datasets_full(dataset_names, org_name)
-
-# We want to save a version here for caching
-cache_dataset(use_dataset)
-
 # clean up ragged tables
 trials_table <- fix_table_types(trials_table)
 tables_to_combine <- list(trials_table, users_table)
@@ -39,7 +34,8 @@ all_data <- combine_tables(tables_to_combine)
 
 # This is sample code for a client script
 our_datasets <- list_organization_datasets()
-found_dataset <- find_dataset(our_datasets, 'DE-pilot')
+our_datasets_full <- get_datasets_full(dataset_names, org_name)
+found_dataset <- keep(our_datasets_full, name == 'DE-plot')
 dataset_properties <- get_dataset_properties(found_dataset[[1]])
 
 compare_name <- function(dataset) {
@@ -51,4 +47,6 @@ compare_name <- function(dataset) {
 }
 found_dataset <- our_datasets[sapply(our_datasets, compare_name)]
 
+# We want to save a version here for caching
+cache_dataset(use_dataset_full)
 
