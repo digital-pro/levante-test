@@ -18,15 +18,16 @@ library(rlevante)
 loadNamespace("redivis") 
 
 # Setup Redivis parameters
-dataset_name <- list("DE-pilot")
 org_name <- "levante"
 tbls <- c("groups", "runs", "trials", "user_groups", "users")
 dataset_names <- c("DE-pilot")
 
 # Get dataset(s)
 #our_dataset <- get_datasets_full(dataset_name, org_name)
-our_dataset_properties <- rlevante::get_dataset_properties(org_name, dataset_names)
-our_dataset <- rlevante::get_datasets(dataset_names, org_name, tables = tbls)
+#our_dataset_properties <- rlevante::get_dataset_properties(org_name, dataset_names)
+
+
+our_dataset <- get_datasets(dataset_names, org_name, tables = tbls)
 
 # We _might_ want to save a version here for caching
 #debug_data <- cache_dataset(our_dataset[[1]], our_dataset_properties)
