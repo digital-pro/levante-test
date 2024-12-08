@@ -1,4 +1,4 @@
 files:
-  - source: '*/*.xlsx'
-    translation: '%original_file_name%'
+  - source: /translations/*.xlsx
+    translation: /translations/%original_file_name%_translated.xslx
     multilingual: 1
