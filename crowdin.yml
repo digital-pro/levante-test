@@ -2,3 +2,5 @@ files:
   - source: '*.xlsx'
     translation: /translations/%original_file_name%_translated.xslx
     multilingual: 1
+bundles:
+  - 2
